@@ -3,10 +3,13 @@ export default function Footer() {
     <footer>
       {   <footer className="footer">
         <div className="footer-logo">
-          <span className="logo-icon">J</span>
+          <img
+          src="/images/logo.png"
+          alt="شعار فندق غرناطة"
+          className="logo-image"/>
           <div>
-            <h3>فندق الجابري</h3>
-            <span>AL JABRI HOTEL</span>
+            <h3>فندق غرناطة</h3>
+            <span>Granada HOTEL</span>
           </div>
         </div>
 
@@ -15,7 +18,7 @@ export default function Footer() {
         </p>
 
         <span className="copyright">
-          © 2026 AL JABRI HOTEL. ALL RIGHTS RESERVED.
+          © 2026 Granada HOTEL. ALL RIGHTS RESERVED.
         </span>
       </footer> }
     </footer>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "../components/LanguageProvider";
 import { useState } from "react";
 
 type ServicePageProps = {
@@ -13,6 +14,8 @@ export default function ServicePage({
   description,
   options,
 }: ServicePageProps) {
+
+  const { t } = useLanguage();
   const [selected, setSelected] = useState(options[0]);
   const [quantity, setQuantity] = useState(1);
   const [notes, setNotes] = useState("");
@@ -28,7 +31,7 @@ export default function ServicePage({
   return (
     <main className="service-page">
       <div className="service-page-header">
-        <span className="section-label">AL JABRI HOTEL</span>
+        <span className="section-label">Granada HOTEL</span>
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
@@ -47,7 +50,7 @@ export default function ServicePage({
           ))}
         </select>
 
-        <label>الكمية</label>
+        <label>{t("quantity")}</label>
 
         <div className="quantity-control">
           <button
@@ -67,7 +70,7 @@ export default function ServicePage({
           </button>
         </div>
 
-        <label>ملاحظات إضافية</label>
+        <label>{t("notes")}</label>
 
         <textarea
           value={notes}
@@ -76,7 +79,7 @@ export default function ServicePage({
         />
 
         <button type="submit" className="service-submit">
-          إرسال الطلب
+          {t("send")}
         </button>
 
         <p className="demo-notice">

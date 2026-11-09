@@ -1,49 +1,53 @@
+"use client";
 
+import { translations } from "../lib/translations";
+import { useLanguage } from "../components/LanguageProvider";
 import Link from "next/link";
+
 {/*للوصول للخدمات واضافة خدمة جديدة */}
 const services = [
   {
-    number: "01",
-    title: "خدمات الغرف",
+    number: "01", 
+    title: "rooms",
     description: "كل ما تحتاجه لراحة وإقامة أكثر رفاهية.",
     image:
-      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900",
+      "/images/rooms.jpg",
     link: "/rooms",
   },
   {
     number: "02",
-    title: "خدمة المغسلة",
+    title: "laundry",
     description: "خدمات غسيل وكي الملابس بعناية واحترافية.",
     image:
-      "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=900",
+      "/images/laundry.jpg",
     link: "/laundry",
   },
   {
     number: "03",
-    title: "الكافيه",
+    title: "cafe",
     description: "استمتع بمشروباتك وأطباقك المفضلة.",
     image:
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900",
+      "/images/cafe.jpg",
     link: "/cafe",
   },
   {
     number: "04",
-    title: "خدمات الفندق",
+    title: "hotel",
     description: "اكتشف المزيد من الخدمات والمرافق.",
     image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900",
+      "/images/hotel.jpg",
     link: "/hotel",
   },
   {
      number: "05",
-    title: "خدمة الواي فاي",
+    title: "wifi",
     description: "ابقَ على اتصال بالإنترنت طوال فترة إقامتك.",
-    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900",
+    image: "/images/wifi.jpg",
     link: "/wifi",
   },
   {
     number: "06",
-    title: "قيّم تجربتك",
+    title: "reviews",
     description: "رأيك يهمنا ويساعدنا على تقديم الأفضل.",
     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900",
     link: "/reviews",
@@ -51,6 +55,10 @@ const services = [
 ];
 
 export default function Home() {
+
+  const { t } = useLanguage();
+
+
   return (
     <main className="website">
 
@@ -60,13 +68,13 @@ export default function Home() {
 
         <div className="hero-content">
           <span className="welcome-label">
-            مرحباً بك في فندق الجابري
+            {t("welcome")}
           </span>
 
           <h1>
-            راحتك تبدأ
+            {t("comfort")}
             <br />
-            <span>من هنا</span>
+            <span>{t("fromHere")}</span>
           </h1>
 
           <p>
@@ -75,7 +83,7 @@ export default function Home() {
           </p>
 
           <a href="#services" className="hero-btn">
-            اكتشف خدماتنا
+            {t("discover")}
             <span>←</span>
           </a>
         </div>
@@ -150,11 +158,11 @@ export default function Home() {
               </div>
 
               <div className="service-info">
-                <h3>{service.title}</h3>
+                <h3>{t(service.title as keyof typeof translations.ar)}</h3>
                 <p>{service.description}</p>
 
                  <span className="service-link">
-                 الوصول إلى الخدمة
+                 {t("details")}
                  <span> ← </span>
                </span>
               </div>
@@ -179,7 +187,7 @@ export default function Home() {
         </div>
 
         <a href="tel:+966000000000" className="contact-btn">
-          ☎ تواصل مع الاستقبال
+          ☎ {t("receptionContact")}
         </a>
       </section>
 

@@ -1,25 +1,57 @@
-import LanguageSwitcher from "./LanguageSwitcher";
-export default function Header(){
-    return (
-        <header>
+"use client";
 
-   { <header className="header">
+import { useState } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "./LanguageProvider";
+
+export default function Header() {
+
+  const { t } = useLanguage();
+
+ // التحكم في فتح وإغلاق قائمة الجوال
+ const [menuOpen, setMenuOpen] = useState(false);
+
+    return (
+       
+      <header className="header">
+        
         <div className="logo">
-          <span className="logo-icon">J</span>
+        <img
+        src="/images/logo.png"
+        alt="شعار فندق غرناطة"
+        className="logo-image"
+        />
           <div>
-            <h2>فندق الجابري</h2>
-            <span>AL JABRI HOTEL</span>
+            <h2>فندق غرناطة</h2>
+            <span>Granada HOTEL</span>
           </div>
         </div>
 
-        <nav className="navigation">
-          <a href="#home">الرئيسية</a>
-          <a href="#services">الخدمات</a>
-          <a href="#contact">تواصل معنا</a>
+        {/* زر لقائمة الجوال */}
+        <button
+         className="menu-toggle"
+         //هذا السطر يعكس حالة القائمة اذا مغلقة يفتحها واذا مفتوحة يغلقها
+         onClick={() => setMenuOpen(!menuOpen)}
+         aria-label="فتح وإغلاق القائمة"
+         aria-expanded={menuOpen}
+         >
+          {menuOpen ? "X" : "☰"}
+          </button>
+
+          {/* روابط الموقع */}
+        <nav className={`navigation ${menuOpen ? "active" : ""}`}>
+
+          <a href="#home" onClick={() => setMenuOpen(false)}>{t("home")}</a>
+
+          <a href="#services" onClick={() => setMenuOpen(false)}>{t("services")}</a>
+
+          <a href="#contact" onClick={() => setMenuOpen(false)}>{t("contact")}</a>
+
         </nav>
+
         <LanguageSwitcher />
 
-      </header> }
-        </header>
+      </header> 
+        
     );
 }

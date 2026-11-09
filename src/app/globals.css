@@ -55,16 +55,11 @@ button {
   gap: 12px;
 }
 
-.logo-icon {
-  width: 46px;
-  height: 46px;
-  background: var(--navy);
-  color: var(--gold);
-  display: grid;
-  place-items: center;
-  font-size: 25px;
-  font-family: Georgia, serif;
-  border: 1px solid var(--gold);
+.logo-image {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  display: block;
 }
 
 .logo h2,
@@ -104,12 +99,23 @@ button {
   font-size: 11px;
 }
 
+/* زر قائمة الجوال*/
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--navy);
+  font-size: 24px;
+  padding:5px 12px;
+  cursor: pointer;
+}
+
 /* HERO */
 
 .hero {
   min-height: 590px;
   position: relative;
-  background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=2000');
+  background-image: url('/images/bghotel.jpg');
   background-position: center;
   background-size: cover;
   display: flex;
@@ -265,8 +271,8 @@ button {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
 }
 
 .service-card {
@@ -431,14 +437,46 @@ button {
     font-size: 13px;
   }
 
-  .navigation {
-    display: none;
-  }
+ .menu-toggle {
+  display: block;
+}
+
+.header {
+  position: relative;
+}
+
+/* قائمة الجوال*/
+.navigation {
+  display: none;
+  position: absolute;
+  top: 75px;
+  right: 0;
+  left: 0;
+  background: white;
+  flex-direction: column;
+  gap: 0;
+  padding: 10px 5%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+/*اظهار القائمة عند الضغط*/
+.navigation.active {
+  display: flex !important;
+}
+
+.navigation a {
+  display: block;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
 
   .language-btn {
     padding: 8px;
     font-size: 10px;
   }
+
+  
 
   .hero {
     min-height: 650px;
